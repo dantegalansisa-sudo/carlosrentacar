@@ -96,16 +96,19 @@
     }
     .fleet-card__gallery {
       position: relative;
-      height: 280px;
+      aspect-ratio: 3 / 4;
       overflow: hidden;
-      background: #f8f6f3;
+      background: #f0ede8;
     }
     .fleet-card__gallery img {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
       opacity: 0;
       transition: opacity 0.4s;
+      padding: 8px;
+      box-sizing: border-box;
     }
     .fleet-card__gallery img.active { opacity: 1; }
     .fleet-card__thumbs {
@@ -544,7 +547,7 @@
 
         <h1 class="hero__title">Libertad que te<br><em>lleva más lejos.</em></h1>
 
-        <p class="hero__sub">Tu Hyundai Sonata New Rise 2020, cuando y donde lo necesitas. Entrega a domicilio en Azua.</p>
+        <p class="hero__sub">El vehículo que necesitas, cuando y donde lo necesitas. Entrega a domicilio en Azua.</p>
 
         <!-- Quick book widget -->
         <div class="hero__book" id="heroBookForm">
@@ -575,14 +578,14 @@
         <div class="hero__slider-wrap">
           <div class="hero__circle"></div>
           <div class="hero__cars">
-            <img src="imagenes/blanco.jpeg" class="hero__car hero__car--active" alt="Hyundai Sonata New Rise 2020 Blanco" loading="eager">
-            <img src="imagenes/gris.jpeg" class="hero__car" alt="Hyundai Sonata New Rise 2020 Gris" loading="lazy">
-            <img src="imagenes/blanco1.jpeg" class="hero__car" alt="Hyundai Sonata New Rise 2020 Blanco detalle" loading="lazy">
+            <img src="imagenes/car1.png" class="hero__car hero__car--active" alt="Vehiculo premium 1" loading="eager">
+            <img src="imagenes/car2.png" class="hero__car" alt="Vehiculo premium 2" loading="lazy">
+            <img src="imagenes/car3.png" class="hero__car" alt="Vehiculo premium 3" loading="lazy">
           </div>
           <div class="hero__dots">
-            <button class="hero__dot hero__dot--active" aria-label="Sonata Blanco"></button>
-            <button class="hero__dot" aria-label="Sonata Gris"></button>
-            <button class="hero__dot" aria-label="Sonata Blanco detalle"></button>
+            <button class="hero__dot hero__dot--active" aria-label="Vehiculo 1"></button>
+            <button class="hero__dot" aria-label="Vehiculo 2"></button>
+            <button class="hero__dot" aria-label="Vehiculo 3"></button>
           </div>
         </div>
       </div>
@@ -598,13 +601,13 @@
   <!-- MARQUEE -->
   <section class="brands-marquee" id="brands">
     <div class="brands-marquee__track">
-      <span class="brands-marquee__item">Hyundai Sonata</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Ocean Rent a Car</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Entrega a Domicilio</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Azua, RD</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Desde RD$2,500/dia</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">5+ dias RD$2,200</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Reserva por WhatsApp</span><span class="brands-marquee__sep">✦</span>
-      <span class="brands-marquee__item">Hyundai Sonata</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Alquiler de Vehiculos</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Entrega a Domicilio</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Azua, RD</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Desde RD$2,500/dia</span><span class="brands-marquee__sep">✦</span>
@@ -618,9 +621,9 @@
     <div class="flota__header">
       <span class="section-eyebrow">— Nuestra Flota</span>
       <h2 class="section-display">
-        Dos Sonatas,<br><em>un solo nivel</em> de calidad.
+        Flota disponible,<br><em>lista para salir.</em>
       </h2>
-      <p class="section-lede">Elige el color que va contigo. Ambos en perfectas condiciones, con AC, audio y el confort que mereces para recorrer Azua y mas alla.</p>
+      <p class="section-lede">Rentamos cualquier marca y modelo. Estos son los vehículos disponibles actualmente — todos en perfectas condiciones, con AC y el confort que mereces para recorrer Azua y mas allá.</p>
     </div>
 
     <div class="flota__grid">
@@ -731,7 +734,7 @@
         <div class="tarifa-card__price">2,500</div>
         <div class="tarifa-card__per">RD$ por dia</div>
         <ul class="tarifa-card__features">
-          <li>Sonata New Rise 2020</li>
+          <li>Vehiculo disponible de la flota</li>
           <li>Aire acondicionado</li>
           <li>Pickup en Azua</li>
           <li>Seguro basico incluido</li>
@@ -744,7 +747,7 @@
         <div class="tarifa-card__price">2,200</div>
         <div class="tarifa-card__per">RD$ por dia · precio especial</div>
         <ul class="tarifa-card__features">
-          <li>Sonata New Rise 2020</li>
+          <li>Vehiculo disponible de la flota</li>
           <li>Aire acondicionado</li>
           <li>Entrega a domicilio incluida</li>
           <li>Seguro basico incluido</li>
@@ -780,8 +783,8 @@
         <div class="step__icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4F2EF" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         </div>
-        <h3 class="step__title">Elige tu Sonata</h3>
-        <p class="step__desc">Selecciona entre el Sonata Blanco o el Gris. Ambos Hyundai Sonata New Rise 2020 en perfectas condiciones, equipados y listos para salir.</p>
+        <h3 class="step__title">Elige tu Vehículo</h3>
+        <p class="step__desc">Selecciona el vehículo disponible que mejor se adapte a tus necesidades. Todos en perfectas condiciones, equipados y listos para salir.</p>
       </div>
 
       <div class="step">
@@ -968,7 +971,7 @@
         <h2 class="section-display section-display--light">
           Hablemos<br><em>ahora mismo.</em>
         </h2>
-        <p class="section-lede section-lede--light">Reserva tu Sonata New Rise en minutos. Respuesta rapida, atencion personalizada, sin complicaciones.</p>
+        <p class="section-lede section-lede--light">Reserva tu vehículo en minutos. Respuesta rapida, atencion personalizada, sin complicaciones.</p>
       </div>
 
       <div class="concierge__grid">
