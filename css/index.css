@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   MATOS DEALER · CINEMATIC INDEX STYLES v6
+   ORTEGA RENT CAR · CINEMATIC INDEX STYLES v7
    Palette: rhythmic DARK ↔ LIGHT alternation
 ═══════════════════════════════════════════ */
 
@@ -244,7 +244,23 @@
   animation: carEnterDrive 0.7s cubic-bezier(0.2, 0, 0.3, 1) forwards;
 }
 
-/* ─── DOTS ─── */
+/* Reverse drive (prev) */
+@keyframes carExitDriveRev {
+  from { transform: translateX(0);     opacity: 1; }
+  to   { transform: translateX(-120%); opacity: 0; }
+}
+@keyframes carEnterDriveRev {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+.hero__car--exit-rev {
+  animation: carExitDriveRev 0.6s cubic-bezier(0.4, 0, 0.8, 0.2) forwards;
+}
+.hero__car--enter-rev {
+  animation: carEnterDriveRev 0.7s cubic-bezier(0.2, 0, 0.3, 1) forwards;
+}
+
+/* ─── DOTS + ARROWS ─── */
 .hero__dots {
   position: absolute;
   bottom: -30px;
@@ -253,7 +269,29 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  z-index: 3;
 }
+
+.hero__arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(26,26,26,0.2);
+  background: transparent;
+  color: #1A1A1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.hero__arrow--prev { margin-right: 6px; }
+.hero__arrow--next { margin-left: 6px; }
+.hero__arrow:hover { background: #1A1A1A; border-color: #1A1A1A; color: #F4F2EF; }
+.hero__arrow:focus-visible,
+.hero__dot:focus-visible { outline: 2px solid #C0392B; outline-offset: 3px; }
 
 .hero__dot {
   width: 6px;

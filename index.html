@@ -3,26 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ocean Rent a Car — Azua, República Dominicana · Libertad que te lleva más lejos</title>
-  <meta name="description" content="Ocean Rent a Car en Azua, RD. Alquila el Hyundai Sonata New Rise 2020. Desde RD$2,500/día. Entrega a domicilio disponible.">
+  <title>Ortega Rent Car — Santo Domingo, República Dominicana · Libertad que te lleva más lejos</title>
+  <meta name="description" content="Ortega Rent Car en Piantini, Santo Domingo. Alquiler de vehículos de lujo: Mercedes-AMG, Porsche 911 y Cadillac Escalade. Entrega a domicilio en todo Santo Domingo. Reserva por WhatsApp.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_DO">
+  <meta property="og:site_name" content="Ortega Rent Car">
+  <meta property="og:title" content="Ortega Rent Car — Alquiler de vehículos de lujo en Santo Domingo">
+  <meta property="og:description" content="Mercedes-AMG, Porsche 911 y Cadillac Escalade. Entrega a domicilio en Santo Domingo, Distrito Nacional. Reserva por WhatsApp.">
+  <meta property="og:image" content="imagenes/flota/mercedes-gle63s-coupe-negro.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRental",
+    "name": "Ortega Rent Car",
+    "description": "Alquiler de vehículos de lujo con entrega a domicilio en Santo Domingo.",
+    "telephone": "+1-829-523-4738",
+    "image": "imagenes/flota/mercedes-gle63s-coupe-negro.webp",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Winston Churchill, Piantini",
+      "addressLocality": "Santo Domingo",
+      "addressRegion": "Distrito Nacional",
+      "addressCountry": "DO"
+    },
+    "areaServed": "Santo Domingo",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:00", "closes": "19:00" }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/shared.css?v=6">
-  <link rel="stylesheet" href="css/index.css?v=6">
+  <link rel="stylesheet" href="css/index.css?v=7">
 
   <style>
-    /* ═══ OCEAN RENT A CAR — OVERRIDES ═══ */
+    /* ═══ ORTEGA RENT CAR — OVERRIDES ═══ */
     .navbar__logo {
       color: #1A1A1A;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-size: clamp(0.85rem, 1.8vw, 1rem);
+      min-height: 80px;
     }
-    .navbar__logo img { height: 80px; width: auto; flex-shrink: 0; }
     .navbar__logo span { color: var(--bronze-500); }
 
     /* ─── HERO QUICK BOOK ─── */
@@ -96,20 +128,19 @@
     }
     .fleet-card__gallery {
       position: relative;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: #f0ede8;
     }
     .fleet-card__gallery img {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
       opacity: 0;
-      transition: opacity 0.4s;
-      padding: 8px;
-      box-sizing: border-box;
+      transition: opacity 0.4s, transform 0.8s cubic-bezier(0.22,1,0.36,1);
     }
+    .fleet-card:hover .fleet-card__gallery img.active { transform: scale(1.03); }
     .fleet-card__gallery img.active { opacity: 1; }
     .fleet-card__thumbs {
       position: absolute;
@@ -158,7 +189,7 @@
       margin-bottom: 16px;
     }
     .fleet-card__specs {
-      display: flex; gap: 20px;
+      display: flex; flex-wrap: wrap; gap: 10px 20px;
       margin-bottom: 20px;
     }
     .fleet-card__spec {
@@ -464,6 +495,11 @@
       flex-shrink: 0;
     }
 
+    /* ─── CONTACTO / UBICACION ─── */
+    /* auto-fit: si Instagram está oculto, las tarjetas restantes ocupan el ancho */
+    .concierge__grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .showroom__cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
     /* ─── MOBILE HERO FIX ─── */
     @media (max-width: 768px) {
       .hero__socials { display: none; }
@@ -496,9 +532,8 @@
 
   <!-- NAVBAR -->
   <nav class="navbar navbar--floating" id="navbar">
-    <a href="index.html" class="navbar__logo">
-      <img src="logo.png" alt="Ocean Rent a Car" loading="eager">
-      OCEAN <span>RENT A CAR</span>
+    <a href="index.html" class="navbar__logo" aria-label="Ortega Rent Car — Inicio">
+      ORTEGA <span>RENT CAR</span>
     </a>
     <button class="navbar__burger" id="burger" aria-label="Abrir menu">
       <span></span><span></span><span></span>
@@ -511,14 +546,14 @@
     <a href="#como-funciona">Como Funciona</a>
     <a href="#reservar">Reservar</a>
     <a href="#ubicacion">Ubicacion</a>
-    <a href="https://wa.me/18099457675?text=Hola%2C+vengo+del+sitio+web+de+Ocean+Rent+a+Car+y+me+gustaria+reservar+un+vehiculo." target="_blank" rel="noopener" class="btn-cinema btn-cinema--solid btn-cinema--invert" style="margin-top:24px">Reservar por WhatsApp</a>
+    <a href="https://wa.me/18295234738?text=Hola%2C+vengo+del+sitio+web+de+Ortega+Rent+Car+y+me+gustar%C3%ADa+reservar+un+veh%C3%ADculo." target="_blank" rel="noopener" class="btn-cinema btn-cinema--solid btn-cinema--invert" style="margin-top:24px">Reservar por WhatsApp</a>
   </div>
 
   <!-- HERO -->
   <section class="hero" id="hero">
 
     <div class="hero__socials">
-      <a href="https://www.instagram.com/oceanrentacar55" target="_blank" rel="noopener" class="hero__social" aria-label="Instagram">
+      <a href="#" data-social="instagram" target="_blank" rel="noopener" class="hero__social" aria-label="Instagram">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
           <defs><linearGradient id="ig-grad" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad)" stroke-width="2"/>
@@ -526,10 +561,10 @@
           <circle cx="17.5" cy="6.5" r="1.5" fill="url(#ig-grad)"/>
         </svg>
       </a>
-      <a href="#" class="hero__social" aria-label="Facebook">
+      <a href="#" data-social="facebook" target="_blank" rel="noopener" class="hero__social" aria-label="Facebook">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
       </a>
-      <a href="https://wa.me/18099457675" target="_blank" rel="noopener" class="hero__social" aria-label="WhatsApp">
+      <a href="https://wa.me/18295234738" target="_blank" rel="noopener" class="hero__social" aria-label="WhatsApp">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </a>
     </div>
@@ -542,19 +577,16 @@
           <svg width="9" height="12" viewBox="0 0 9 12" fill="none" aria-hidden="true">
             <path d="M4.5 0C2.57 0 1 1.57 1 3.5c0 2.63 3.5 8.5 3.5 8.5S8 6.13 8 3.5C8 1.57 6.43 0 4.5 0zm0 4.75a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z" fill="currentColor"/>
           </svg>
-          OCEAN RENT A CAR · AZUA, REPÚBLICA DOMINICANA
+          ORTEGA RENT CAR · SANTO DOMINGO, REPÚBLICA DOMINICANA
         </span>
 
         <h1 class="hero__title">Libertad que te<br><em>lleva más lejos.</em></h1>
 
-        <p class="hero__sub">El vehículo que necesitas, cuando y donde lo necesitas. Entrega a domicilio en Azua.</p>
+        <p class="hero__sub">El vehículo que necesitas, cuando y donde lo necesitas. Entrega a domicilio en Santo Domingo.</p>
 
-        <!-- Quick book widget -->
+        <!-- Quick book widget (opciones generadas desde js/vehicles.js) -->
         <div class="hero__book" id="heroBookForm">
-          <select id="heroVehicle" aria-label="Vehiculo">
-            <option value="blanco">Sonata Blanco</option>
-            <option value="gris">Sonata Gris</option>
-          </select>
+          <select id="heroVehicle" aria-label="Vehículo"></select>
           <div class="hero__book-sep"></div>
           <input type="number" id="heroDays" placeholder="Dias" min="1" max="30" style="width:70px;" aria-label="Dias">
           <div class="hero__book-sep"></div>
@@ -578,14 +610,21 @@
         <div class="hero__slider-wrap">
           <div class="hero__circle"></div>
           <div class="hero__cars">
-            <img src="imagenes/car1.png" class="hero__car hero__car--active" alt="Vehiculo premium 1" loading="eager">
-            <img src="imagenes/car2.png" class="hero__car" alt="Vehiculo premium 2" loading="lazy">
-            <img src="imagenes/car3.png" class="hero__car" alt="Vehiculo premium 3" loading="lazy">
+            <!-- data-vehicle = id en js/vehicles.js (sincroniza el select del booking bar) -->
+            <img src="imagenes/car1.png" class="hero__car hero__car--active" data-vehicle="escalade" alt="SUV de lujo — Ortega Rent Car" loading="eager">
+            <img src="imagenes/car2.png" class="hero__car" data-vehicle="gle63" alt="Mercedes-Benz — Ortega Rent Car" loading="eager">
+            <img src="imagenes/car3.png" class="hero__car" data-vehicle="gt3rs" alt="Porsche 911 — Ortega Rent Car" loading="eager">
           </div>
           <div class="hero__dots">
-            <button class="hero__dot hero__dot--active" aria-label="Vehiculo 1"></button>
-            <button class="hero__dot" aria-label="Vehiculo 2"></button>
-            <button class="hero__dot" aria-label="Vehiculo 3"></button>
+            <button class="hero__arrow hero__arrow--prev" type="button" aria-label="Vehículo anterior">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="hero__dot hero__dot--active" type="button" aria-label="Vehículo 1"></button>
+            <button class="hero__dot" type="button" aria-label="Vehículo 2"></button>
+            <button class="hero__dot" type="button" aria-label="Vehículo 3"></button>
+            <button class="hero__arrow hero__arrow--next" type="button" aria-label="Vehículo siguiente">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -593,7 +632,7 @@
     </div>
 
     <div class="hero__disclaimer">
-      OCEAN RENT A CAR · AZUA, RD · ENTREGA A DOMICILIO DISPONIBLE
+      ORTEGA RENT CAR · PIANTINI, SANTO DOMINGO · ENTREGA A DOMICILIO DISPONIBLE
     </div>
 
   </section>
@@ -601,17 +640,17 @@
   <!-- MARQUEE -->
   <section class="brands-marquee" id="brands">
     <div class="brands-marquee__track">
-      <span class="brands-marquee__item">Ocean Rent a Car</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Ortega Rent Car</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Entrega a Domicilio</span><span class="brands-marquee__sep">✦</span>
-      <span class="brands-marquee__item">Azua, RD</span><span class="brands-marquee__sep">✦</span>
-      <span class="brands-marquee__item">Desde RD$2,500/dia</span><span class="brands-marquee__sep">✦</span>
-      <span class="brands-marquee__item">5+ dias RD$2,200</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Santo Domingo, RD</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Mercedes-AMG · Porsche · Cadillac</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Flota de Lujo</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Reserva por WhatsApp</span><span class="brands-marquee__sep">✦</span>
-      <span class="brands-marquee__item">Alquiler de Vehiculos</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Ortega Rent Car</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Entrega a Domicilio</span><span class="brands-marquee__sep">✦</span>
-      <span class="brands-marquee__item">Azua, RD</span><span class="brands-marquee__sep">✦</span>
-      <span class="brands-marquee__item">Desde RD$2,500/dia</span><span class="brands-marquee__sep">✦</span>
-      <span class="brands-marquee__item">5+ dias RD$2,200</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Santo Domingo, RD</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Mercedes-AMG · Porsche · Cadillac</span><span class="brands-marquee__sep">✦</span>
+      <span class="brands-marquee__item">Flota de Lujo</span><span class="brands-marquee__sep">✦</span>
       <span class="brands-marquee__item">Reserva por WhatsApp</span><span class="brands-marquee__sep">✦</span>
     </div>
   </section>
@@ -623,102 +662,11 @@
       <h2 class="section-display">
         Flota disponible,<br><em>lista para salir.</em>
       </h2>
-      <p class="section-lede">Rentamos cualquier marca y modelo. Estos son los vehículos disponibles actualmente — todos en perfectas condiciones, con AC y el confort que mereces para recorrer Azua y mas allá.</p>
+      <p class="section-lede">Vehículos de lujo, listos para salir. Todos en perfectas condiciones, revisados y con el confort que mereces para recorrer Santo Domingo y más allá.</p>
     </div>
 
-    <div class="flota__grid">
-
-      <!-- Sonata Blanco -->
-      <div class="fleet-card">
-        <div class="fleet-card__gallery" id="galBlanco">
-          <span class="fleet-card__badge">Disponible</span>
-          <img src="imagenes/blanco.jpeg" class="active" alt="Sonata Blanco frente">
-          <img src="imagenes/blanco1.jpeg" alt="Sonata Blanco lateral">
-          <img src="imagenes/blanco2.jpeg" alt="Sonata Blanco detalle">
-          <img src="imagenes/blanco3.jpeg" alt="Sonata Blanco interior">
-          <div class="fleet-card__thumbs">
-            <div class="fleet-thumb active" onclick="switchImg('galBlanco',0)"><img src="imagenes/blanco.jpeg" alt=""></div>
-            <div class="fleet-thumb" onclick="switchImg('galBlanco',1)"><img src="imagenes/blanco1.jpeg" alt=""></div>
-            <div class="fleet-thumb" onclick="switchImg('galBlanco',2)"><img src="imagenes/blanco2.jpeg" alt=""></div>
-            <div class="fleet-thumb" onclick="switchImg('galBlanco',3)"><img src="imagenes/blanco3.jpeg" alt=""></div>
-          </div>
-        </div>
-        <div class="fleet-card__body">
-          <div class="fleet-card__marca">Hyundai · 2020 · Blanco</div>
-          <h3 class="fleet-card__name">Sonata New Rise</h3>
-          <div class="fleet-card__specs">
-            <span class="fleet-card__spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-              Aire Acond.
-            </span>
-            <span class="fleet-card__spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-              Audio Premium
-            </span>
-            <span class="fleet-card__spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              5 Pasajeros
-            </span>
-          </div>
-          <div class="fleet-card__price">
-            <div class="fleet-card__rate">
-              <span class="fleet-card__amount">2,500</span>
-              <span class="fleet-card__day">RD$/dia</span>
-            </div>
-            <span class="fleet-card__promo">2,200 RD$/dia — 5+ dias</span>
-          </div>
-          <a href="https://wa.me/18099457675?text=Hola+Ocean+Rent+a+Car!+Quiero+reservar+el+Hyundai+Sonata+New+Rise+2020+BLANCO.+Por+favor+indicarme+disponibilidad." class="fleet-card__cta" target="_blank" rel="noopener">
-            <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.351.617 4.654 1.79 6.683L2.667 29.333l6.86-1.79A13.323 13.323 0 0016 29.333c7.364 0 13.333-5.97 13.333-13.333S23.363 2.667 16 2.667zm6.07 16.107c-.333-.166-1.967-.97-2.272-1.082-.305-.111-.527-.166-.749.167s-.86 1.082-1.054 1.304c-.194.222-.388.25-.722.083-.333-.167-1.405-.519-2.677-1.654-.99-.882-1.659-1.97-1.853-2.303-.194-.333-.021-.514.146-.68.149-.149.333-.388.499-.583.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.583-.084-.166-.749-1.804-1.027-2.471-.27-.65-.546-.563-.749-.573-.194-.01-.416-.012-.638-.012s-.583.083-.888.416c-.305.333-1.165 1.137-1.165 2.775s1.193 3.222 1.359 3.444c.166.222 2.348 3.585 5.687 5.026.795.343 1.415.547 1.898.7.798.254 1.524.218 2.098.132.64-.096 1.967-.804 2.244-1.582.277-.778.277-1.444.194-1.582-.083-.139-.305-.222-.638-.388z"/></svg>
-            Reservar Sonata Blanco
-          </a>
-        </div>
-      </div>
-
-      <!-- Sonata Gris -->
-      <div class="fleet-card">
-        <div class="fleet-card__gallery" id="galGris">
-          <span class="fleet-card__badge">Disponible</span>
-          <img src="imagenes/gris.jpeg" class="active" alt="Sonata Gris frente">
-          <img src="imagenes/gris1.jpeg" alt="Sonata Gris lateral">
-          <img src="imagenes/gris2.jpeg" alt="Sonata Gris detalle">
-          <div class="fleet-card__thumbs">
-            <div class="fleet-thumb active" onclick="switchImg('galGris',0)"><img src="imagenes/gris.jpeg" alt=""></div>
-            <div class="fleet-thumb" onclick="switchImg('galGris',1)"><img src="imagenes/gris1.jpeg" alt=""></div>
-            <div class="fleet-thumb" onclick="switchImg('galGris',2)"><img src="imagenes/gris2.jpeg" alt=""></div>
-          </div>
-        </div>
-        <div class="fleet-card__body">
-          <div class="fleet-card__marca">Hyundai · 2020 · Gris</div>
-          <h3 class="fleet-card__name">Sonata New Rise</h3>
-          <div class="fleet-card__specs">
-            <span class="fleet-card__spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-              Aire Acond.
-            </span>
-            <span class="fleet-card__spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-              Audio Premium
-            </span>
-            <span class="fleet-card__spec">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              5 Pasajeros
-            </span>
-          </div>
-          <div class="fleet-card__price">
-            <div class="fleet-card__rate">
-              <span class="fleet-card__amount">2,500</span>
-              <span class="fleet-card__day">RD$/dia</span>
-            </div>
-            <span class="fleet-card__promo">2,200 RD$/dia — 5+ dias</span>
-          </div>
-          <a href="https://wa.me/18099457675?text=Hola+Ocean+Rent+a+Car!+Quiero+reservar+el+Hyundai+Sonata+New+Rise+2020+GRIS.+Por+favor+indicarme+disponibilidad." class="fleet-card__cta" target="_blank" rel="noopener">
-            <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.351.617 4.654 1.79 6.683L2.667 29.333l6.86-1.79A13.323 13.323 0 0016 29.333c7.364 0 13.333-5.97 13.333-13.333S23.363 2.667 16 2.667zm6.07 16.107c-.333-.166-1.967-.97-2.272-1.082-.305-.111-.527-.166-.749.167s-.86 1.082-1.054 1.304c-.194.222-.388.25-.722.083-.333-.167-1.405-.519-2.677-1.654-.99-.882-1.659-1.97-1.853-2.303-.194-.333-.021-.514.146-.68.149-.149.333-.388.499-.583.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.583-.084-.166-.749-1.804-1.027-2.471-.27-.65-.546-.563-.749-.573-.194-.01-.416-.012-.638-.012s-.583.083-.888.416c-.305.333-1.165 1.137-1.165 2.775s1.193 3.222 1.359 3.444c.166.222 2.348 3.585 5.687 5.026.795.343 1.415.547 1.898.7.798.254 1.524.218 2.098.132.64-.096 1.967-.804 2.244-1.582.277-.778.277-1.444.194-1.582-.083-.139-.305-.222-.638-.388z"/></svg>
-            Reservar Sonata Gris
-          </a>
-        </div>
-      </div>
-
-    </div>
+    <!-- Tarjetas generadas desde js/vehicles.js -->
+    <div class="flota__grid" id="flotaGrid"></div>
   </section>
 
   <!-- TARIFAS -->
@@ -730,26 +678,26 @@
 
     <div class="tarifas__grid">
       <div class="tarifa-card">
-        <div class="tarifa-card__days">1 — 4 dias</div>
-        <div class="tarifa-card__price">2,500</div>
-        <div class="tarifa-card__per">RD$ por dia</div>
+        <div class="tarifa-card__days">1 — 4 días</div>
+        <div class="tarifa-card__price" data-precio="desde">—</div>
+        <div class="tarifa-card__per">RD$ por día · desde</div>
         <ul class="tarifa-card__features">
-          <li>Vehiculo disponible de la flota</li>
-          <li>Aire acondicionado</li>
-          <li>Pickup en Azua</li>
+          <li>Cualquier vehículo de la flota</li>
+          <li>Vehículo revisado y limpio</li>
+          <li>Pickup en Piantini</li>
           <li>Seguro basico incluido</li>
           <li>Kilometraje ilimitado en RD</li>
         </ul>
       </div>
 
       <div class="tarifa-card tarifa-card--highlight">
-        <div class="tarifa-card__days">5 dias o mas</div>
-        <div class="tarifa-card__price">2,200</div>
-        <div class="tarifa-card__per">RD$ por dia · precio especial</div>
+        <div class="tarifa-card__days">5 días o más</div>
+        <div class="tarifa-card__price" data-precio="desde5">—</div>
+        <div class="tarifa-card__per">RD$ por día · desde · precio especial</div>
         <ul class="tarifa-card__features">
-          <li>Vehiculo disponible de la flota</li>
-          <li>Aire acondicionado</li>
-          <li>Entrega a domicilio incluida</li>
+          <li>Cualquier vehículo de la flota</li>
+          <li>Vehículo revisado y limpio</li>
+          <li>Entrega a domicilio en Santo Domingo</li>
           <li>Seguro basico incluido</li>
           <li>Kilometraje ilimitado en RD</li>
         </ul>
@@ -760,7 +708,7 @@
         <div class="tarifa-card__price" style="font-size:2rem">A coordinar</div>
         <div class="tarifa-card__per">segun necesidad</div>
         <ul class="tarifa-card__features">
-          <li>Entrega fuera de Azua</li>
+          <li>Entrega fuera de Santo Domingo</li>
           <li>Conductor designado</li>
           <li>Reserva anticipada</li>
           <li>Seguro ampliado</li>
@@ -793,7 +741,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4F2EF" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
         </div>
         <h3 class="step__title">Indica las Fechas</h3>
-        <p class="step__desc">Dinos cuantos dias lo necesitas y la fecha de inicio. Si son 5 dias o mas, automaticamente aplica la tarifa especial de RD$2,200/dia.</p>
+        <p class="step__desc">Dinos cuantos dias lo necesitas y la fecha de inicio. Si son 5 días o más, automáticamente aplica la tarifa especial.</p>
       </div>
 
       <div class="step">
@@ -801,8 +749,8 @@
         <div class="step__icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4F2EF" stroke-width="1.5"><path d="M12 22s8-4.5 8-11.8A8 8 0 004 10.2C4 17.5 12 22 12 22z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <h3 class="step__title">Recibe en Azua</h3>
-        <p class="step__desc">Recoge el vehiculo en nuestra ubicacion en Azua o pidelo con entrega a domicilio. Pagamos la atencion personalizada de principio a fin.</p>
+        <h3 class="step__title">Recíbelo donde estés</h3>
+        <p class="step__desc">Recoge el vehículo en Piantini o pídelo con entrega a domicilio en cualquier punto de Santo Domingo. Atención personalizada de principio a fin.</p>
       </div>
     </div>
   </section>
@@ -823,7 +771,7 @@
           </li>
           <li>
             <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></span>
-            <span>Entrega a domicilio disponible dentro de Azua</span>
+            <span>Entrega a domicilio en todo Santo Domingo</span>
           </li>
           <li>
             <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></span>
@@ -841,13 +789,13 @@
         <div style="display:flex;gap:16px;flex-wrap:wrap;">
           <div style="background:#F4F2EF;border-radius:16px;padding:20px 24px;flex:1;min-width:140px;">
             <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:#6b5d44;margin-bottom:6px;">Tarifa estandar</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#0e0d0b;line-height:1;">RD$ 2,500</div>
-            <div style="font-size:0.75rem;color:#6b5d44;">por dia (1-4 dias)</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#0e0d0b;line-height:1;">RD$ <span data-precio="desde">—</span></div>
+            <div style="font-size:0.75rem;color:#6b5d44;">por día · desde (1-4 días)</div>
           </div>
           <div style="background:#0e0d0b;border-radius:16px;padding:20px 24px;flex:1;min-width:140px;">
             <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;">5 dias o mas</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#F4F2EF;line-height:1;">RD$ 2,200</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">por dia · precio especial</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#F4F2EF;line-height:1;">RD$ <span data-precio="desde5">—</span></div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">por día · desde · precio especial</div>
           </div>
         </div>
       </div>
@@ -860,10 +808,7 @@
 
         <div>
           <label class="calc-label" for="calcVehicle">Vehiculo</label>
-          <select class="calc-select" id="calcVehicle">
-            <option value="Sonata New Rise 2020 - Blanco">Hyundai Sonata New Rise 2020 — Blanco</option>
-            <option value="Sonata New Rise 2020 - Gris">Hyundai Sonata New Rise 2020 — Gris</option>
-          </select>
+          <select class="calc-select" id="calcVehicle" onchange="updateCalc()"></select>
         </div>
 
         <div>
@@ -883,8 +828,8 @@
         <div>
           <label class="calc-label" for="calcEntrega">Modalidad</label>
           <select class="calc-select" id="calcEntrega">
-            <option value="Pickup en Azua (retiro en oficina)">Pickup en Azua (retiro en oficina)</option>
-            <option value="Entrega a domicilio en Azua">Entrega a domicilio en Azua</option>
+            <option value="Pickup en Piantini (retiro en oficina)">Pickup en Piantini (retiro en oficina)</option>
+            <option value="Entrega a domicilio en Santo Domingo">Entrega a domicilio en Santo Domingo</option>
           </select>
         </div>
 
@@ -896,12 +841,12 @@
         <div class="calc-summary">
           <div>
             <div class="calc-summary__label">Total estimado</div>
-            <div class="calc-summary__total" id="calcTotal">RD$ 7,500</div>
-            <div class="calc-summary__note" id="calcNote">3 dias x RD$2,500</div>
+            <div class="calc-summary__total" id="calcTotal">RD$ —</div>
+            <div class="calc-summary__note" id="calcNote"></div>
           </div>
           <div style="text-align:right;">
             <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);">Tarifa</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:rgba(255,255,255,0.7);" id="calcRate">RD$2,500/dia</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:rgba(255,255,255,0.7);" id="calcRate"></div>
           </div>
         </div>
 
@@ -920,14 +865,14 @@
       <div class="showroom__text">
         <span class="section-eyebrow section-eyebrow--light">— Ubicacion</span>
         <h2 class="section-display section-display--light">
-          Azua,<br><em>Republica Dominicana</em>.
+          Santo Domingo,<br><em>República Dominicana</em>.
         </h2>
-        <p class="section-lede section-lede--light">Estamos en Azua para servirte. Tambien hacemos entrega a domicilio dentro de la ciudad. Reserva por WhatsApp y coordinamos todo.</p>
+        <p class="section-lede section-lede--light">Estamos en el corazón del Distrito Nacional. Hacemos entrega a domicilio en toda la ciudad. Reserva por WhatsApp y coordinamos todo.</p>
 
         <div class="showroom__info">
           <div class="showroom__info-row">
-            <span class="showroom__info-label">Ubicacion</span>
-            <span class="showroom__info-value">Azua<br>Republica Dominicana</span>
+            <span class="showroom__info-label">Ubicación</span>
+            <span class="showroom__info-value">Av. Winston Churchill, Piantini<br>Santo Domingo, Distrito Nacional</span>
           </div>
           <div class="showroom__info-row">
             <span class="showroom__info-label">Horario</span>
@@ -935,29 +880,33 @@
           </div>
           <div class="showroom__info-row">
             <span class="showroom__info-label">WhatsApp</span>
-            <span class="showroom__info-value">+1 (809) 945-7675</span>
+            <span class="showroom__info-value">+1 (829) 523-4738</span>
           </div>
         </div>
 
         <div class="showroom__cta">
-          <a href="https://wa.me/18099457675?text=Hola+Ocean+Rent+a+Car!+Quiero+coordinar+la+entrega+o+pickup+del+vehiculo+en+Azua." class="btn-cinema btn-cinema--solid btn-cinema--invert" target="_blank" rel="noopener">
+          <a href="https://wa.me/18295234738?text=Hola%2C+quiero+coordinar+la+entrega+o+pickup+de+un+veh%C3%ADculo+de+Ortega+Rent+Car+en+Santo+Domingo." class="btn-cinema btn-cinema--solid btn-cinema--invert" target="_blank" rel="noopener">
             Coordinar entrega
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Winston+Churchill,+Piantini,+Santo+Domingo,+Rep%C3%BAblica+Dominicana" class="btn-cinema btn-cinema--ghost-light" target="_blank" rel="noopener">
+            Cómo llegar
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4.5 8-11.8A8 8 0 004 10.2C4 17.5 12 22 12 22z"/><circle cx="12" cy="10" r="3"/></svg>
           </a>
         </div>
       </div>
 
       <div class="showroom__map">
         <iframe
-          src="https://maps.google.com/maps?q=Azua,+Dominican+Republic&output=embed&z=13"
+          src="https://maps.google.com/maps?q=Av.+Winston+Churchill,+Piantini,+Santo+Domingo,+Rep%C3%BAblica+Dominicana&amp;output=embed&amp;z=15"
           allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Ocean Rent a Car · Azua, RD">
+          title="Ortega Rent Car · Piantini, Santo Domingo">
         </iframe>
         <div class="showroom__map-tag">
           <span class="showroom__map-dot"></span>
-          Ocean Rent a Car · Azua
+          Ortega Rent Car · Piantini
         </div>
       </div>
     </div>
@@ -975,18 +924,18 @@
       </div>
 
       <div class="concierge__grid">
-        <a href="tel:+18099457675" class="concierge__card">
+        <a href="tel:+18295234738" class="concierge__card">
           <span class="concierge__icon">
             <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22.5 6c1.5.5 2.5 1.5 3 3M22.5 2c3 1 5 3 6 6M21 19l-2 1c-3-2-5-4-7-7l1-2c.5-.5.5-1 0-1.5l-3-4C9.5 4.8 8.5 5 8 5.5L6 7c-1 1-1 3-1 5 0 4 3 9 7 13s9 7 13 7c2 0 4 0 5-1l1.5-2c.5-.5.5-1.5 0-2l-4-3c-.5-.5-1-.5-1.5 0z"/></svg>
           </span>
           <div>
             <span class="concierge__label">Llamar</span>
-            <span class="concierge__value">+1 (809) 945-7675</span>
+            <span class="concierge__value">+1 (829) 523-4738</span>
             <span class="concierge__hint">Lun—Sab · 8:00 — 19:00</span>
           </div>
         </a>
 
-        <a href="https://wa.me/18099457675?text=Hola+Ocean+Rent+a+Car!+Quisiera+reservar+un+vehiculo." target="_blank" rel="noopener" class="concierge__card concierge__card--accent">
+        <a href="https://wa.me/18295234738?text=Hola%2C+quisiera+reservar+un+veh%C3%ADculo+con+Ortega+Rent+Car." target="_blank" rel="noopener" class="concierge__card concierge__card--accent">
           <span class="concierge__icon">
             <svg viewBox="0 0 32 32" width="24" height="24" fill="currentColor"><path d="M16 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.351.617 4.654 1.79 6.683L2.667 29.333l6.86-1.79A13.323 13.323 0 0016 29.333c7.364 0 13.333-5.97 13.333-13.333S23.363 2.667 16 2.667zm6.07 16.107c-.333-.166-1.967-.97-2.272-1.082-.305-.111-.527-.166-.749.167s-.86 1.082-1.054 1.304c-.194.222-.388.25-.722.083-.333-.167-1.405-.519-2.677-1.654-.99-.882-1.659-1.97-1.853-2.303-.194-.333-.021-.514.146-.68.149-.149.333-.388.499-.583.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.583-.084-.166-.749-1.804-1.027-2.471-.27-.65-.546-.563-.749-.573-.194-.01-.416-.012-.638-.012s-.583.083-.888.416c-.305.333-1.165 1.137-1.165 2.775s1.193 3.222 1.359 3.444c.166.222 2.348 3.585 5.687 5.026.795.343 1.415.547 1.898.7.798.254 1.524.218 2.098.132.64-.096 1.967-.804 2.244-1.582.277-.778.277-1.444.194-1.582-.083-.139-.305-.222-.638-.388z"/></svg>
           </span>
@@ -997,13 +946,13 @@
           </div>
         </a>
 
-        <a href="https://www.instagram.com/oceanrentacar55" target="_blank" rel="noopener" class="concierge__card">
+        <a href="#" data-social="instagram" target="_blank" rel="noopener" class="concierge__card">
           <span class="concierge__icon">
             <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="24" height="24" rx="6"/><circle cx="16" cy="16" r="6"/><circle cx="23" cy="9" r="1.5" fill="currentColor" stroke="none"/></svg>
           </span>
           <div>
             <span class="concierge__label">Instagram</span>
-            <span class="concierge__value">@oceanrentacar55</span>
+            <span class="concierge__value">Síguenos</span>
             <span class="concierge__hint">Fotos y disponibilidad</span>
           </div>
         </a>
@@ -1011,7 +960,7 @@
 
       <div class="concierge__footnote">
         <span class="concierge__pulse"></span>
-        Disponible para reservas · Azua, RD
+        Disponible para reservas · Santo Domingo, RD
       </div>
     </div>
   </section>
@@ -1020,9 +969,9 @@
   <footer class="footer-cinema">
     <div class="footer-cinema__top">
       <h3 class="footer-cinema__bigword">
-        Ocean<br><em>Rent a Car</em>.
+        Ortega<br><em>Rent Car</em>.
       </h3>
-      <a href="https://wa.me/18099457675?text=Hola+Ocean+Rent+a+Car!+Quisiera+reservar+un+vehiculo." class="footer-cinema__cta" target="_blank" rel="noopener">
+      <a href="https://wa.me/18295234738?text=Hola%2C+quisiera+reservar+un+veh%C3%ADculo+con+Ortega+Rent+Car." class="footer-cinema__cta" target="_blank" rel="noopener">
         <span>Reservar ahora</span>
         <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 16h20M20 8l8 8-8 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -1042,127 +991,149 @@
       <div>
         <span class="footer-cinema__label">Contacto</span>
         <ul>
-          <li><a href="tel:+18099457675">+1 (809) 945-7675</a></li>
-          <li><a href="https://wa.me/18099457675" target="_blank">WhatsApp Directo</a></li>
-          <li>Azua, Republica Dominicana</li>
+          <li><a href="tel:+18295234738">+1 (829) 523-4738</a></li>
+          <li><a href="https://wa.me/18295234738" target="_blank" rel="noopener">WhatsApp Directo</a></li>
+          <li>Av. Winston Churchill, Piantini<br>Santo Domingo, República Dominicana</li>
         </ul>
       </div>
-      <div>
+      <div data-social-group>
         <span class="footer-cinema__label">Redes Sociales</span>
         <ul>
-          <li><a href="https://www.instagram.com/oceanrentacar55" target="_blank">Instagram</a></li>
+          <li data-social-item><a href="#" data-social="instagram" target="_blank" rel="noopener">Instagram</a></li>
+          <li data-social-item><a href="#" data-social="facebook" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-cinema__bottom">
-      <p>&copy; 2026 Ocean Rent a Car · Azua, Republica Dominicana. Todos los derechos reservados.</p>
+      <p>&copy; 2026 Ortega Rent Car · Santo Domingo, República Dominicana. Todos los derechos reservados.</p>
       <p>Libertad que te lleva mas lejos</p>
     </div>
   </footer>
 
   <!-- Floating WhatsApp -->
-  <a href="https://wa.me/18099457675?text=Hola+Ocean+Rent+a+Car!+Quisiera+reservar+un+vehiculo." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Reservar por WhatsApp">
+  <a href="https://wa.me/18295234738?text=Hola%2C+quisiera+reservar+un+veh%C3%ADculo+con+Ortega+Rent+Car." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Reservar por WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16.001 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.351.617 4.654 1.79 6.683L2.667 29.333l6.86-1.79A13.323 13.323 0 0016 29.333c7.364 0 13.333-5.97 13.333-13.333S23.363 2.667 16.001 2.667zm0 24.4a11.04 11.04 0 01-5.626-1.539l-.404-.24-4.075 1.069 1.087-3.974-.263-.418A11.07 11.07 0 014.933 16C4.933 9.892 9.893 4.933 16 4.933s11.067 4.96 11.067 11.067-4.96 11.067-11.067 11.067zm6.07-8.293c-.333-.166-1.967-.97-2.272-1.082-.305-.111-.527-.166-.749.167s-.86 1.082-1.054 1.304c-.194.222-.388.25-.722.083-.333-.167-1.405-.519-2.677-1.654-.99-.882-1.659-1.97-1.853-2.303-.194-.333-.021-.514.146-.68.149-.149.333-.388.499-.583.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.583-.084-.166-.749-1.804-1.027-2.471-.27-.65-.546-.563-.749-.573-.194-.01-.416-.012-.638-.012s-.583.083-.888.416c-.305.333-1.165 1.137-1.165 2.775s1.193 3.222 1.359 3.444c.166.222 2.348 3.585 5.687 5.026.795.343 1.415.547 1.898.7.798.254 1.524.218 2.098.132.64-.096 1.967-.804 2.244-1.582.277-.778.277-1.444.194-1.582-.083-.139-.305-.222-.638-.388z"/></svg>
   </a>
 
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="js/cinematic.js?v=3"></script>
+  <script src="js/config.js?v=1"></script>
+  <script src="js/vehicles.js?v=1"></script>
 
   <script>
-  // Gallery switcher
-  function switchImg(galId, idx) {
-    var gal = document.getElementById(galId);
-    var imgs = gal.querySelectorAll('img:not(.fleet-thumb img)');
-    var thumbs = gal.querySelectorAll('.fleet-thumb');
-    imgs.forEach(function(img,i){ img.classList.toggle('active', i===idx); });
-    thumbs.forEach(function(t,i){ t.classList.toggle('active', i===idx); });
-  }
-
-  // Days counter
-  function changeDays(delta) {
-    var el = document.getElementById('calcDaysNum');
-    var val = Math.max(1, Math.min(30, parseInt(el.value||1) + delta));
-    el.value = val;
-    updateCalc();
-  }
-
-  // Update calculator
-  function updateCalc() {
-    var days = Math.max(1, parseInt(document.getElementById('calcDaysNum').value)||1);
-    var rate = days >= 5 ? 2200 : 2500;
-    var total = days * rate;
-    document.getElementById('calcTotal').textContent = 'RD$ ' + total.toLocaleString('es-DO');
-    document.getElementById('calcNote').textContent = days + ' dia' + (days>1?'s':'') + ' x RD$' + rate.toLocaleString('es-DO');
-    document.getElementById('calcRate').textContent = 'RD$' + rate.toLocaleString('es-DO') + '/dia';
-  }
-
-  // Send reservation via WhatsApp
-  function enviarReserva() {
-    var vehicle  = document.getElementById('calcVehicle').value;
-    var days     = document.getElementById('calcDaysNum').value;
-    var fecha    = document.getElementById('calcFecha').value;
-    var entrega  = document.getElementById('calcEntrega').value;
-    var nombre   = document.getElementById('calcNombre').value.trim() || 'No indicado';
-    var rate     = parseInt(days) >= 5 ? 2200 : 2500;
-    var total    = parseInt(days) * rate;
-    var msg = 'Hola Ocean Rent a Car! Quiero hacer una reserva:\n\n'
-      + 'Vehiculo: ' + vehicle + '\n'
-      + 'Dias: ' + days + '\n'
-      + (fecha ? 'Fecha inicio: ' + fecha + '\n' : '')
-      + 'Modalidad: ' + entrega + '\n'
-      + 'Total estimado: RD$' + total.toLocaleString('es-DO') + ' (' + rate + ' x ' + days + ' dias)\n'
-      + 'Mi nombre: ' + nombre;
-    window.open('https://wa.me/18099457675?text=' + encodeURIComponent(msg), '_blank');
-  }
-
-  // Hero quick book
-  function heroReservar() {
-    var vehicle = document.getElementById('heroVehicle').value === 'blanco'
-      ? 'Sonata New Rise 2020 - Blanco' : 'Sonata New Rise 2020 - Gris';
-    var days = document.getElementById('heroDays').value || '';
-    var rate = parseInt(days) >= 5 ? 2200 : 2500;
-    var total = days ? parseInt(days) * rate : 0;
-    var msg = 'Hola Ocean Rent a Car! Quiero reservar el ' + vehicle
-      + (days ? ' por ' + days + ' dias.' : '.')
-      + (total ? ' Total estimado: RD$' + total.toLocaleString('es-DO') + '.' : '')
-      + ' Disponibilidad?';
-    window.open('https://wa.me/18099457675?text=' + encodeURIComponent(msg), '_blank');
-  }
-
-  // Set min date to today
   (function(){
-    var d = new Date();
-    var str = d.toISOString().split('T')[0];
-    var el = document.getElementById('calcFecha');
-    if(el) { el.min = str; el.value = str; }
-    updateCalc();
-  })();
+    var fmt = function(n){ return n.toLocaleString('es-DO'); };
+    var byId = function(id){ return VEHICULOS.find(function(v){ return v.id === id; }); };
+    var WA_ICON = '<svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.351.617 4.654 1.79 6.683L2.667 29.333l6.86-1.79A13.323 13.323 0 0016 29.333c7.364 0 13.333-5.97 13.333-13.333S23.363 2.667 16 2.667zm6.07 16.107c-.333-.166-1.967-.97-2.272-1.082-.305-.111-.527-.166-.749.167s-.86 1.082-1.054 1.304c-.194.222-.388.25-.722.083-.333-.167-1.405-.519-2.677-1.654-.99-.882-1.659-1.970-1.853-2.303-.194-.333-.021-.514.146-.68.149-.149.333-.388.499-.583.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.583-.084-.166-.749-1.804-1.027-2.471-.27-.65-.546-.563-.749-.573-.194-.01-.416-.012-.638-.012s-.583.083-.888.416c-.305.333-1.165 1.137-1.165 2.775s1.193 3.222 1.359 3.444c.166.222 2.348 3.585 5.687 5.026.795.343 1.415.547 1.898.7.798.254 1.524.218 2.098.132.64-.096 1.967-.804 2.244-1.582.277-.778.277-1.444.194-1.582-.083-.139-.305-.222-.638-.388z"/></svg>';
+    var ICO_CAT = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>';
+    var ICO_PAX = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>';
+    var ICO_TX = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M5 8v8M12 8v8M19 8v4H5"/></svg>';
 
-  // Navbar scroll
-  (function(){
-    var nav = document.getElementById('navbar');
-    var burger = document.getElementById('burger');
-    var menu = document.getElementById('mobileMenu');
-    window.addEventListener('scroll', function(){
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    });
-    if(burger && menu){
-      burger.addEventListener('click', function(){
-        menu.classList.toggle('is-open');
-        burger.classList.toggle('is-open');
-      });
-      menu.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click', function(){
-          menu.classList.remove('is-open');
-          burger.classList.remove('is-open');
-        });
-      });
+    // ── Tarjetas de flota (datos en js/vehicles.js)
+    var grid = document.getElementById('flotaGrid');
+    if (grid) {
+      grid.innerHTML = VEHICULOS.map(function(v){
+        var label = vehiculoLabel(v);
+        var meta = [v.marca, v.ano, v.color].filter(Boolean).join(' · ');
+        return '<article class="fleet-card">' +
+          '<div class="fleet-card__gallery">' +
+            '<span class="fleet-card__badge">' + v.categoria + '</span>' +
+            '<img src="' + v.imagen + '" class="active" alt="' + label + ' ' + v.color.toLowerCase() + ' — Ortega Rent Car" loading="lazy" style="object-position:' + (v.posicion || 'center') + '">' +
+          '</div>' +
+          '<div class="fleet-card__body">' +
+            '<div class="fleet-card__marca">' + meta + '</div>' +
+            '<h3 class="fleet-card__name">' + v.modelo + '</h3>' +
+            '<div class="fleet-card__specs">' +
+              '<span class="fleet-card__spec">' + ICO_CAT + v.categoria + '</span>' +
+              '<span class="fleet-card__spec">' + ICO_PAX + v.pasajeros + ' Pasajeros</span>' +
+              '<span class="fleet-card__spec">' + ICO_TX + v.transmision + '</span>' +
+            '</div>' +
+            '<div class="fleet-card__price">' +
+              '<div class="fleet-card__rate">' +
+                '<span class="fleet-card__amount">' + fmt(v.precio) + '</span>' +
+                '<span class="fleet-card__day">RD$/día</span>' +
+              '</div>' +
+              '<span class="fleet-card__promo">' + fmt(v.precio5) + ' RD$/día — 5+ días</span>' +
+            '</div>' +
+            '<a href="' + waLink('Hola, quiero reservar el ' + label) + '" class="fleet-card__cta" target="_blank" rel="noopener">' +
+              WA_ICON + 'Reservar' +
+            '</a>' +
+          '</div>' +
+        '</article>';
+      }).join('');
     }
+
+    // ── Selects (hero + calculadora)
+    var heroSel = document.getElementById('heroVehicle');
+    var calcSel = document.getElementById('calcVehicle');
+    if (heroSel) heroSel.innerHTML = VEHICULOS.map(function(v){
+      return '<option value="' + v.id + '">' + v.nombre + '</option>';
+    }).join('');
+    if (calcSel) calcSel.innerHTML = VEHICULOS.map(function(v){
+      return '<option value="' + v.id + '">' + v.nombre + ' — ' + v.color + '</option>';
+    }).join('');
+
+    // ── "Desde" en tarifas
+    var min = function(k){ return Math.min.apply(null, VEHICULOS.map(function(v){ return v[k]; })); };
+    document.querySelectorAll('[data-precio="desde"]').forEach(function(el){ el.textContent = fmt(min('precio')); });
+    document.querySelectorAll('[data-precio="desde5"]').forEach(function(el){ el.textContent = fmt(min('precio5')); });
+
+    function rateFor(v, days){ return days >= 5 ? v.precio5 : v.precio; }
+
+    // Days counter
+    window.changeDays = function(delta) {
+      var el = document.getElementById('calcDaysNum');
+      el.value = Math.max(1, Math.min(30, parseInt(el.value || 1) + delta));
+      updateCalc();
+    };
+
+    // Update calculator
+    window.updateCalc = function() {
+      var v = byId(calcSel.value) || VEHICULOS[0];
+      var days = Math.max(1, parseInt(document.getElementById('calcDaysNum').value) || 1);
+      var rate = rateFor(v, days);
+      document.getElementById('calcTotal').textContent = 'RD$ ' + fmt(days * rate);
+      document.getElementById('calcNote').textContent = days + ' día' + (days > 1 ? 's' : '') + ' x RD$' + fmt(rate);
+      document.getElementById('calcRate').textContent = 'RD$' + fmt(rate) + '/día';
+    };
+
+    // Send reservation via WhatsApp
+    window.enviarReserva = function() {
+      var v = byId(calcSel.value) || VEHICULOS[0];
+      var days = Math.max(1, parseInt(document.getElementById('calcDaysNum').value) || 1);
+      var fecha = document.getElementById('calcFecha').value;
+      var entrega = document.getElementById('calcEntrega').value;
+      var nombre = document.getElementById('calcNombre').value.trim() || 'No indicado';
+      var rate = rateFor(v, days);
+      var msg = 'Hola, quiero reservar el ' + vehiculoLabel(v) + ' (' + v.color + ').\n\n'
+        + 'Días: ' + days + '\n'
+        + (fecha ? 'Fecha inicio: ' + fecha + '\n' : '')
+        + 'Modalidad: ' + entrega + '\n'
+        + 'Total estimado: RD$' + fmt(days * rate) + ' (RD$' + fmt(rate) + ' x ' + days + ' días)\n'
+        + 'Mi nombre: ' + nombre;
+      window.open(waLink(msg), '_blank', 'noopener');
+    };
+
+    // Hero quick book
+    window.heroReservar = function() {
+      var v = byId(heroSel.value) || VEHICULOS[0];
+      var days = parseInt(document.getElementById('heroDays').value) || 0;
+      var msg = 'Hola, quiero reservar el ' + vehiculoLabel(v)
+        + (days ? ' por ' + days + ' día' + (days > 1 ? 's' : '') + '. Total estimado: RD$' + fmt(days * rateFor(v, days)) + '.' : '.')
+        + ' ¿Está disponible?';
+      window.open(waLink(msg), '_blank', 'noopener');
+    };
+
+    // Min date = today
+    var d = document.getElementById('calcFecha');
+    if (d) { var t = new Date().toISOString().split('T')[0]; d.min = t; d.value = t; }
+    updateCalc();
   })();
   </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/cinematic.js?v=4"></script>
+  <script src="js/hero-slider.js?v=2"></script>
 
 </body>
 </html>
